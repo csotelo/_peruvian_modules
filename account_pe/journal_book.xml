@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+  <data>
+    <!--PLE Journal-->
+
+    <record model="ir.action.report" id="journal_ebook_report_ple">
+      <field name="name">Libro Diario Simp.</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">journal.ebook.report.ple</field>
+      <field name="report">account_pe/report/journal_ebook_ple.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="journal_ebook_report_ple_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="journal_ebook_report_ple"/>
+    </record>
+
+    <record model="ir.action.report" id="journal_ebook_report_plain">
+      <field name="name">Libro Diario Simp.</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">journal.ebook.report.plain</field>
+      <field name="report">account_pe/report/journal_ebook.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="journal_ebook_report_plain_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="journal_ebook_report_plain"/>
+    </record>
+    <record model="ir.action.report" id="journal_ebook_report_spread">
+      <field name="name">Libro Diario Simp.</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">ods</field>
+      <field name="report_name">journal.ebook.report.spread</field>
+      <field name="report">account_pe/report/journal_book.ods</field>
+    </record>
+
+    <record model="ir.action.keyword" id="journal_ebook_report_spread_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="journal_ebook_report_spread"/>
+    </record>
+
+    <record model="ir.action.report" id="journal_ebook_report_text">
+      <field name="name">Libro Diario Simp.</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">journal.ebook.report.text</field>
+      <field name="report">account_pe/report/libro_diario.txt</field>
+    </record>
+
+    <record model="ir.action.keyword" id="journal_ebook_report_text_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="journal_ebook_report_text"/>
+    </record>
+
+    <record model="ir.action.report" id="journal_ebook_report_accounting">
+      <field name="name">Plan de Cuentas</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">journal.ebook.report.accounting</field>
+      <field name="report">account_pe/report/journal_ebook_accounting.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="journal_ebook_report_accounting_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="journal_ebook_report_accounting"/>
+    </record>
+
+    <record model="ir.ui.view" id="journal_ebook_form">
+      <field name="model">journal.ebook</field>
+      <field name="type">form</field>
+      <field name="name">journal_ebook_view_form</field>
+    </record>
+    <record model="ir.action.wizard" id="journal_ebook_wizard">
+      <field name="name">Generar Libro Diario Simp.</field>
+      <field name="wiz_name">journal.ebook.wizard</field>
+    </record>
+
+    <record model="ir.ui.view" id="major_ebook_form">
+      <field name="model">journal.ebook</field>
+      <field name="type">form</field>
+      <field name="name">major_ebook_view_form</field>
+    </record>
+    <record model="ir.action.wizard" id="major_ebook_wizard">
+      <field name="name">Generar Libro Mayor Simp.</field>
+      <field name="wiz_name">major.ebook.wizard</field>
+    </record>
+
+    <record model="ir.action.report" id="major_ebook_report_ple">
+      <field name="name">Libro Mayor</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">major.ebook.report</field>
+      <field name="report">account_pe/report/journal_ebook_ple.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="major_ebook_report_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="major_ebook_report_ple"/>
+    </record>
+
+    <record model="ir.action.report" id="major_ebook_report_spread">
+      <field name="name">Libro Mayor</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">ods</field>
+      <field name="report_name">major.ebook.report.spread</field>
+      <field name="report">account_pe/report/major_book.ods</field>
+    </record>
+    <record model="ir.action.keyword" id="major_ebook_report_spreadkeyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="major_ebook_report_spread"/>
+    </record>
+
+     <record model="ir.action.report" id="major_ebook_report_text">
+      <field name="name">Libro Mayor</field>
+      <field name="model">journal.ebook</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">major.ebook.report.text</field>
+      <field name="report">account_pe/report/libro_diario.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="major_ebook_report_textkeyword">
+      <field name="keyword">form_print</field>
+      <field name="model">journal.ebook,-1</field>
+      <field name="action" ref="major_ebook_report_text"/>
+    </record>
+
+    <menuitem name="Libro Diario" parent="menu_account_sunat" id="menu_journal_ebook" action="journal_ebook_wizard"/>
+    <menuitem name="Libro Mayor" parent="menu_account_sunat" id="menu_major_ebook" action="major_ebook_wizard"/>
+  </data>
+</tryton>

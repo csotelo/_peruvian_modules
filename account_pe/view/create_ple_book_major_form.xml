@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<form>
+  <label name="company"/>
+  <field name="company"/>
+  <newline/>
+  <label name="fiscalyear"/>
+  <field name="fiscalyear"/>
+</form>

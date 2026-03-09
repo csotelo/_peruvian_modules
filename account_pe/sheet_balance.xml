@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <!--Sheet Balance-->
+        <record model="ir.ui.view" id="balance_sheet_view_form">
+            <field name="model">balance.sheet</field>
+            <field name="type">form</field>
+            <field name="name">balance_sheet_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="balance_sheet_wizard">
+            <field name="name">Balance General</field>
+            <field name="wiz_name">balance.sheet.wizard</field>
+        </record>
+
+        <record model="ir.action.report" id="'balance_sheet_report">
+            <field name="name">Balance General</field>
+            <field name="model">balance.sheet</field>
+            <field name="template_extension">ods</field>
+            <field name="report_name">balance.sheet.report</field>
+            <field name="report">account_pe/report/balance_sheet_report.ods</field>
+        </record>
+
+        <record model="ir.action.wizard" id="balance_sums_wizard">
+            <field name="name">Balance de Comprobación</field>
+            <field name="wiz_name">balance.sums.wizard</field>
+        </record>
+
+        <record model="ir.action.report" id="'balance_sums_report">
+            <field name="name">Balance de Comprobación</field>
+            <field name="model">balance.sheet</field>
+            <field name="template_extension">ods</field>
+            <field name="report_name">balance.sums.report</field>
+            <field name="report">account_pe/report/balance_sums_report.ods</field>
+        </record>
+
+
+        <menuitem name="Balance General" parent="menu_account_sunat" id="menu_balance_sheet" action="balance_sheet_wizard"/>
+        <menuitem name="Balance de Comprobación" parent="menu_account_sunat" id="menu_balance_sums" action="balance_sums_wizard"/>
+
+    </data>
+</tryton>

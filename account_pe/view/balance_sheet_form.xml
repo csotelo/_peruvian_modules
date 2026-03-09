@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<form>
+  <label name="company"/>
+  <field name="company"/>
+  <newline/>
+  <label name="fiscalyear"/>
+  <field name="fiscalyear"/>
+  <label name="start_period"/>
+  <field name="start_period"/>
+  <label name="end_period"/>
+  <field name="end_period"/>
+</form>

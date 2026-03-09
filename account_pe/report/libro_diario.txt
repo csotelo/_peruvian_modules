@@ -1,0 +1,15 @@
+${company.party.name}
+${company.ruc}
+
+                                                                                            LIBRO ${book_type} 
+
+
+
+FECHA${''.ljust(3)}CODIGO${''.ljust(7)}CUENTA CONTABLE${''.ljust(35)}DESCRIPCIÓN${''.ljust(39)}CRÉDITO${''.ljust(14)}DÉBITO${''.ljust(14)}DOC
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+{% for move in records %}
+{% for line in move.lines %}
+${format_date(move.date, user.language).ljust(8)} ${(line.account.code and (line.account.code + ' ') or '').ljust(8)} ${line.account.name.ljust(50)} ${line.description.ljust(50) if line.description else ''.ljust(50)} ${str(line.debit).ljust(20)} ${str(line.credit).ljust(20)}{% end %}
+Totales${''.ljust(115)}${str(move_dict[move.id][1]).ljust(20)} ${str(move_dict[move.id][0])} {% end %}

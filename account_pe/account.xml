@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+  <data>
+    <!--PLE Journal-->
+
+    <record model="ir.action.report" id="report_sunat_journal_ple">
+      <field name="name">libro-diario</field>
+      <field name="model">account_pe.ple.journal.model</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">account_pe.reporting.sunat_journal_ple</field>
+      <field name="report">account_pe/report/ple_diario.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="report_sunat_journal_ple_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">account_pe.ple.journal.model,-1</field>
+      <field name="action" ref="report_sunat_journal_ple"/>
+    </record>
+    <record model="ir.action.report" id="report_sunat_journal_ple_spreadsheet">
+      <field name="name">libro-diario</field>
+      <field name="model">account_pe.ple.journal.model</field>
+      <field name="template_extension">ods</field>
+      <field name="report_name">account_pe.reporting.sunat_journal_spread</field>
+      <field name="report">account_pe/report/ple_diario.ods</field>
+    </record>
+    <record model="ir.action.keyword" id="report_sunat_journal_ple_spreadsheet_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">account_pe.ple.journal.model,-1</field>
+      <field name="action" ref="report_sunat_journal_ple_spreadsheet"/>
+    </record>
+
+    <record model="ir.action.report" id="report_sunat_journal_plain">
+      <field name="name">libro-diario</field>
+      <field name="model">account_pe.ple.journal.model</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">account_pe.reporting.sunat_journal_plain</field>
+      <field name="report">account_pe/report/libro_diario.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="report_sunat_journal_plain_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">account_pe.ple.journal.model,-1</field>
+      <field name="action" ref="report_sunat_journal_plain"/>
+    </record>
+
+    <record model="ir.ui.view" id="create_ple_journal_view_form">
+      <field name="model">account_pe.ple.journal.start</field>
+      <field name="type">form</field>
+      <field name="name">create_ple_book_form</field>
+    </record>
+    <record model="ir.action.wizard" id="wizard_journal_book">
+      <field name="name">Generar libro diario</field>
+      <field name="wiz_name">account_pe.ple.journal</field>
+    </record>
+
+    <!--//PLE Journal-->
+
+    <!--PLE Major-->
+
+    <record model="ir.action.report" id="report_sunat_major_ple">
+      <field name="name">libro-mayor</field>
+      <field name="model">account_pe.ple.major.model</field>
+      <field name="template_extension">txt</field>
+      <field name="report_name">account_pe.reporting.sunat_major_ple</field>
+      <field name="report">account_pe/report/ple_mayor.txt</field>
+    </record>
+    <record model="ir.action.keyword" id="report_sunat_major_ple_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">account_pe.ple.major.model,-1</field>
+      <field name="action" ref="report_sunat_major_ple"/>
+    </record>
+    <record model="ir.action.report" id="report_sunat_major_ple_spreadsheet">
+      <field name="name">libro-mayor</field>
+      <field name="model">account_pe.ple.major.model</field>
+      <field name="template_extension">ods</field>
+      <field name="report_name">account_pe.reporting.sunat_major_spread</field>
+      <field name="report">account_pe/report/ple_mayor.ods</field>
+    </record>
+    <record model="ir.action.keyword" id="report_sunat_major_ple_spreadsheet_keyword">
+      <field name="keyword">form_print</field>
+      <field name="model">account_pe.ple.major.model,-1</field>
+      <field name="action" ref="report_sunat_major_ple_spreadsheet"/>
+    </record>
+
+    <record model="ir.ui.view" id="create_ple_major_view_form">
+      <field name="model">account_pe.ple.major.start</field>
+      <field name="type">form</field>
+      <field name="name">create_ple_book_major_form</field>
+    </record>
+    <record model="ir.action.wizard" id="wizard_major_book">
+      <field name="name">Generar libro mayor</field>
+      <field name="wiz_name">account_pe.ple.major</field>
+    </record>
+
+    <!--//PLE Major-->
+
+    <!--Views-->
+
+    <record model="ir.ui.view" id="move_view_form">
+      <field name="model">account.move</field>
+      <field name="inherit" ref="account.move_view_form"/>
+      <field name="name">move_form</field>
+    </record>
+
+
+    <!-- Menues -->
+    <!-- Menu: SUNAT -->
+    <menuitem name="Reportes SUNAT" parent="account.menu_account" id="menu_account_sunat" sequence="10"/>
+
+  </data>
+</tryton>
