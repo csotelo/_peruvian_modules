@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<data>
+  <xpath expr="/form/notebook/page/label[@name='unit_price']"
+        position="before">
+        <label name="gross_unit_price"/>
+        <field name="gross_unit_price"/>
+        <label name="discount"/>
+        <group col="2" id="discount">
+            <field name="discount" factor="100" xexpand="0" xfill="0"/>
+            <label name="discount" string="%" xalign="0.0" xexpand="1" xfill="1"/>
+        </group>
+        <!--
+        <group col="2" id="discount">
+
+            <field name="global_discount" factor="100" xexpand="0" xfill="0"/>
+            <label name="global_discount" string="%" xalign="0.0" xexpand="1" xfill="1"/>
+
+        </group>
+        -->
+    </xpath>
+</data>

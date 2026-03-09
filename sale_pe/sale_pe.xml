@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!--Views: Sale-->
+
+        <record model="ir.ui.view" id="sale_line_view_tree">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree"/>
+            <field name="name">sale_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+
+
+        <!-- Report: Sale -->
+
+        <record model="ir.action.report" id="sale.report_sale">
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="ir.action.report" id="report_sale">
+            <field name="name">Venta-Cotización</field>
+            <field name="report_name">sale.sale</field>
+            <field name="model">sale.sale</field>
+            <field name="report">sale_pe/report/sale.odt</field>
+            <field name="template_extension">odt</field>
+        </record>
+
+        <record model="ir.action.keyword" id="report_sale_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="report_sale"/>
+        </record>
+
+        <!--PLE Sales-->
+        <record model="ir.action.report" id="report_sunat_sale_plain">
+            <field name="name">libro-ventas</field>
+            <field name="model">account_pe.ple.sale.model</field>
+            <field name="template_extension">txt</field>
+            <field name="report_name">account_pe.reporting.sunat_sale_plain</field>
+            <field name="report">sale_pe/report/libro_ventas_plano.txt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sunat_sale_plain_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account_pe.ple.sale.model,-1</field>
+            <field name="action" ref="report_sunat_sale_plain"/>
+        </record>
+
+        <record model="ir.action.report" id="report_sunat_sale_ple">
+            <field name="name">libro-ventas</field>
+            <field name="model">account_pe.ple.sale.model</field>
+            <field name="template_extension">txt</field>
+            <field name="report_name">account_pe.reporting.sunat_sale_ple</field>
+            <field name="report">sale_pe/report/libro_ventas_ple.txt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sunat_sale_ple_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account_pe.ple.sale.model,-1</field>
+            <field name="action" ref="report_sunat_sale_ple"/>
+        </record>
+        
+        <record model="ir.action.report" id="report_sunat_sale_spreadsheet">
+            <field name="name">libro-ventas</field>
+            <field name="model">account_pe.ple.sale.model</field>
+            <field name="template_extension">ods</field>
+            <field name="report_name">account_pe.reporting.sunat_sale_spread</field>
+            <field name="report">sale_pe/report/libro_ventas.ods</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sunat_sale_spreadsheet_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account_pe.ple.sale.model,-1</field>
+            <field name="action" ref="report_sunat_sale_spreadsheet"/>
+        </record>
+
+        <record model="ir.ui.view" id="create_ple_sale_view_form">
+            <field name="model">account_pe.ple.sale.start</field>
+            <field name="type">form</field>
+            <field name="name">create_ple_book_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_sale_book">
+            <field name="name">Generar libro de ventas</field>
+            <field name="wiz_name">account_pe.ple.sale</field>
+        </record>
+        <!--//PLE Sales-->
+        <record model="ir.ui.view" id="create_detailed_report">
+            <field name="model">sale_pe.ple.sale.detailed.start</field>
+            <field name="type">form</field>
+            <field name="name">create_detailed_report_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_detailed_report">
+            <field name="name">Generar Reporte Detallado</field>
+            <field name="wiz_name">sale.detailed.wiz</field>
+        </record>
+
+        <record model="ir.action.report" id="report_sale_detailed">
+            <field name="name">Reporte Detallado</field>
+            <field name="model">sale.detailed</field>
+            <field name="report_name">sale_pe.detailed_report</field>
+            <field name="template_extension">ods</field>
+            <field name="report">sale_pe/report/sale_journal1.ods</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sale_detailed_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.detailed,-1</field>
+            <field name="action" ref="report_sale_detailed"/>
+        </record>
+
+        <record model="ir.action.report" id="report_sale_detailed1">
+            <field name="name">Reporte Condensado de Ventas</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">sale_pe.conde_report</field>
+            <field name="template_extension">ods</field>
+            <field name="report">sale_pe/report/sale_journal1.ods</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sale_detailed_keyword1">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="report_sale_detailed1"/>
+        </record>
+
+        <!-- Menues -->
+        <!-- Menu: SUNAT -->
+        <menuitem name="Registro de ventas" parent="account_pe.menu_account_sunat" id="menu_account_sunat_book_sale" action="wizard_sale_book"/>
+        <menuitem name="Reporte de ventas diarias" parent="account.menu_reporting" id="menu_sale_detailed_report" action="wizard_detailed_report"/>
+
+    </data>
+</tryton>

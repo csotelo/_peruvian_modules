@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<data>
+    <xpath
+        expr="/tree/field[@name='date']"
+        position="after">
+        <field name="description" string="Comprobante de pago"/>
+        <field name="account"/>
+    </xpath>
+</data>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+ <form>
+    <group id="void_invoice_info">
+        <image name="tryton-info" xexpand="0" xfill="0"/>
+        <label 
+            string="¿Realmente desea dar de baja el/los comprobante(s)? Este proceso es irreversible." 
+            id="void_help_text" 
+            yalign="0.0" 
+            xalign="0.0" 
+            xexpand="1"/>
+    </group>
+    <newline/>
+    <group id="void_invoice_form">
+        <label name="reason"/>
+        <field name="reason"/>
+    </group>
+</form>

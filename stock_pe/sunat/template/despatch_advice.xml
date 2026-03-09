@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DespatchAdvice xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" 
+    xmlns:ccts="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2" 
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+    xmlns:udt="urn:un:unece:uncefact:data:draft:UnqualifiedDataTypesSchemaModule:2" 
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" 
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
+    xmlns:py="http://genshi.edgewall.org/">
+    <ext:UBLExtensions>
+        <ext:UBLExtension>
+            <ext:ExtensionContent>
+                <ds:Signature Id="placeholder"></ds:Signature>
+            </ext:ExtensionContent>
+        </ext:UBLExtension>
+    </ext:UBLExtensions>
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID>1.0</cbc:CustomizationID>
+    <cbc:ProfileID>bpid:urn:oasis:names:draft:bpss:ubl-2-sbs-despatch-advice-notification-draft</cbc:ProfileID>
+    <cbc:ID>${document.serial}</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:IssueDate>${document.issue_date}</cbc:IssueDate>
+    <cbc:DespatchAdviceTypeCode>09</cbc:DespatchAdviceTypeCode>
+    
+    <!--${document.#unsubscribing} -->
+    <cac:OrderReference py:if="document.is_unsubscribing">
+        <cbc:ID>${document.serial}</cbc:ID>
+        <cbc:OrderTypeCode>09</cbc:OrderTypeCode>
+    </cac:OrderReference>
+    <!-- ${document./unsubscribing} -->
+
+    <cac:Signature>
+        <cbc:ID>${document.signature_id}</cbc:ID>
+        <cac:SignatoryParty>
+            <cac:PartyIdentification>
+                <cbc:ID>${document.signature_party_identification}</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>${document.signature_party_name}</cbc:Name>
+            </cac:PartyName>
+        </cac:SignatoryParty>
+        <cac:DigitalSignatureAttachment>
+            <cac:ExternalReference>
+                <cbc:URI>SIGN</cbc:URI>
+            </cac:ExternalReference>
+        </cac:DigitalSignatureAttachment>
+    </cac:Signature>
+
+    <cac:DespatchSupplierParty>
+        <cbc:CustomerAssignedAccountID schemeID="6">${document.supplier_id}</cbc:CustomerAssignedAccountID>
+        <cac:Party>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName><![CDATA[${document.supplier_name}]]></cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:DespatchSupplierParty>
+    <!--Tipo de documento: por defecto 61 -> guia 
+  <cbc:DespatchAdviceTypeCode>61</cbc:DespatchAdviceTypeCode>
+  -->
+    <!-- ${document.#has_observations} -->
+    <cbc:Note py:if="document.has_observations"><![CDATA[${document.observations}]]></cbc:Note>
+    <!-- ${document./has_observations}-->
+  
+  <!--${document.#has_related_document} -->
+    <cac:AdditionalDocumentReference py:if="document.has_related_document">
+        <cbc:ID>${document.related_serial}</cbc:ID>
+        <cbc:DocumentTypeCode>09</cbc:DocumentTypeCode>
+    </cac:AdditionalDocumentReference>
+    <!-- ${document./has_related_document} -->
+    <cac:DeliveryCustomerParty>
+        <cbc:CustomerAssignedAccountID schemeID="6">${document.customer_id}</cbc:CustomerAssignedAccountID>
+        <cac:Party>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName><![CDATA[${document.customer_name}]]></cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:DeliveryCustomerParty>
+    <cac:Shipment>
+        <cbc:ID>${document.serial}</cbc:ID>
+        <cbc:HandlingCode>${document.handling_code}</cbc:HandlingCode>
+        <cbc:Information><![CDATA[${document.reason}]]></cbc:Information>
+        <cbc:GrossWeightMeasure unitCode="KGM">${document.gross_weight}</cbc:GrossWeightMeasure>
+        <cbc:TotalTransportHandlingUnitQuantity>${document.handling_unit_quantity}</cbc:TotalTransportHandlingUnitQuantity>
+        <cbc:SplitConsignmentIndicator>${document.is_split_consignment}</cbc:SplitConsignmentIndicator>
+        <cac:ShipmentStage>
+            <!-- 1 -> Transporte publico -->
+            <!-- 2 -> Transporte privado -->
+            <cbc:TransportModeCode>${document.transport_mode_code}</cbc:TransportModeCode>
+            <cac:TransitPeriod>
+                <cbc:StartDate>${document.transport_start_date}</cbc:StartDate>
+            </cac:TransitPeriod>
+            <cac:CarrierParty>
+                <cac:PartyIdentification>
+                    <cbc:ID schemeID="6">${document.carrier_id}</cbc:ID>
+                </cac:PartyIdentification>
+                <cac:PartyName>
+                    <cbc:Name><![CDATA[${document.carrier_name}]]></cbc:Name>
+                </cac:PartyName>
+            </cac:CarrierParty>
+            <cac:TransportMeans>
+                <cac:RoadTransport>
+                    <cbc:LicensePlateID>${document.license_plate}</cbc:LicensePlateID>
+                </cac:RoadTransport>
+            </cac:TransportMeans>
+            <cac:DriverPerson>
+                <cbc:ID schemeID="1">${document.driver_id}</cbc:ID>
+            </cac:DriverPerson>
+        </cac:ShipmentStage>
+        <!-- <cac:TransportHandlingUnit py:if="document.has_multiple_vehicles">
+        <cac:TransportEquipment py:for="vehicle in document.vehicles">
+            <cbc:ID>${vehicle.next_license_plate}</cbc:ID>
+        </cac:TransportEquipment>
+    </cac:TransportHandlingUnit> -->
+        <cac:Delivery>
+            <cac:DeliveryAddress>
+                <cbc:ID>${document.delivery_ubigeo}</cbc:ID>
+                <cbc:StreetName><![CDATA[${document.delivery_street_name}]]></cbc:StreetName>
+            </cac:DeliveryAddress>
+        </cac:Delivery>
+        <cac:OriginAddress>
+            <cbc:ID>${document.origin_ubigeo}</cbc:ID>
+            <cbc:StreetName><![CDATA[${document.origin_street_name}]]></cbc:StreetName>
+        </cac:OriginAddress>
+        <cac:FirstArrivalPortLocation>
+            <cbc:ID>${document.port_id}</cbc:ID>
+        </cac:FirstArrivalPortLocation>
+    </cac:Shipment>
+    <cac:DespatchLine
+        py:for="line_number in range(0, len(document.lines))"
+        py:with="line = document.lines[line_number]">
+        <cbc:ID>${line.item_ordinal}</cbc:ID>
+        <cbc:DeliveredQuantity unitCode="${line.item_uom}">${line.item_quantity}</cbc:DeliveredQuantity>
+        <cac:OrderLineReference>
+            <cbc:LineID>${line.item_ordinal}</cbc:LineID>
+        </cac:OrderLineReference>
+        <cac:Item>
+            <cbc:Name><![CDATA[${line.item_name}]]></cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>${line.sellers_item_reference}</cbc:ID>
+            </cac:SellersItemIdentification>
+        </cac:Item>
+    </cac:DespatchLine>
+</DespatchAdvice>

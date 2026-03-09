@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<tree editable="bottom">
+  <!--
+    <field name="day_of_week" expand="1"/>
+    <field name="shift_start_time" widget="time" readonly="1"/>
+    <field name="shift_end_time" widget="time" readonly="1"/>
+    -->
+</tree>

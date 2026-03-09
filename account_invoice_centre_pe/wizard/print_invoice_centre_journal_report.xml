@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="print_view_form">
+            <field name="model">account.invoice.centre.statement.print_report.init</field>
+            <field name="type">form</field>
+            <field name="name">invoice.centre_statement_print_report</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_print_invoice.centre_report">
+            <field name="name">Imprimir reporte de caja</field>
+            <field name="wiz_name">account.invoice.centre.statement.print_report</field>
+            <field name="model">account.invoice.centre.statement</field>
+        </record>
+        <record model="ir.action.keyword" id="act_print_invoice.centre_report_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice.centre.statement,-1</field>
+            <field name="action" ref="act_print_invoice.centre_report"/>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<form>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="document_type"/>
+    <field name="document_type"/>
+    <label name="despatch_sequence"/>
+    <field name="despatch_sequence"/>
+</form>

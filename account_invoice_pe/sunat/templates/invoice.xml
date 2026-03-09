@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+    xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2"
+    xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:py="http://genshi.edgewall.org/">    
+    <ext:UBLExtensions>
+        <ext:UBLExtension>
+            <ext:ExtensionContent>
+                <ds:Signature Id="placeholder"></ds:Signature>
+            </ext:ExtensionContent>
+        </ext:UBLExtension>
+    </ext:UBLExtensions>
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID>2.0</cbc:CustomizationID>
+    <cbc:ID>${document['ID']}</cbc:ID>
+    <cbc:IssueDate>${document['IssueDate']}</cbc:IssueDate>
+    <cbc:IssueTime>${document['IssueTime']}</cbc:IssueTime>
+    <cbc:DueDate>${document['IssueDueDate']}</cbc:DueDate>
+    <cbc:InvoiceTypeCode listID="0101"
+        listAgencyName="PE:SUNAT"
+        listName="SUNAT:Identificador de Tipo de Documento"
+        listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01">${document['InvoiceTypeCode']}</cbc:InvoiceTypeCode>
+    <cbc:Note languageLocaleID="1000">${document['PayableAmount1000']}</cbc:Note>
+    <cbc:DocumentCurrencyCode listID="ISO 4217 Alpha"
+        listName="Currency"
+        listAgencyName="United Nations Economic Commission for Europe">${document['DocumentCurrencyCode']}</cbc:DocumentCurrencyCode>
+    <cac:Signature>
+        <cbc:ID>${document['SignatureID']}</cbc:ID>
+        <cac:SignatoryParty>
+            <cac:PartyIdentification>
+                <cbc:ID>${document['SignatureIDPartyIdentification']}</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>${document['SignatureIDPartyName']}</cbc:Name>
+            </cac:PartyName>
+        </cac:SignatoryParty>
+        <cac:DigitalSignatureAttachment>
+            <cac:ExternalReference>
+                <cbc:URI>#SignatureKG</cbc:URI>
+            </cac:ExternalReference>
+        </cac:DigitalSignatureAttachment>
+    </cac:Signature>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="${document['AccountingSupplierPartyTypeId']}"
+                    schemeName="SUNAT:Identificador de Documento de Identidad"
+                    schemeAgencyName="PE:SUNAT"
+                    schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">${document['AccountingSupplierPartyID']}</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>${document['AccountingSupplierPartyName']}</cbc:Name>
+            </cac:PartyName>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>${document['AccountingSupplierPartyName']}</cbc:RegistrationName>
+                <cac:RegistrationAddress>
+                <cbc:AddressTypeCode>0000</cbc:AddressTypeCode>
+                </cac:RegistrationAddress>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="${document['AccountingCustomerPartyTypeID']}"
+                    schemeName="SUNAT:Identificador de Documento de Identidad"
+                    schemeAgencyName="PE:SUNAT"
+                    schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">${document['AccountingCustomerPartyID']}</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>${document['AccountingCustomerPartyRegistrationName']}</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <py:choose test="document['PaymentTerm']">
+        <py:when test="'cash'">
+        <cac:PaymentTerms>
+            <cbc:ID>FormaPago</cbc:ID>
+            <cbc:PaymentMeansID>Contado</cbc:PaymentMeansID>
+            <cbc:Amount currencyID="${document['DocumentCurrencyCode']}">${document['LegalMonetaryTotalPayableAmount']}</cbc:Amount>
+        </cac:PaymentTerms>
+        </py:when >
+        <py:otherwise>
+        <cac:PaymentTerms>
+            <cbc:ID>FormaPago</cbc:ID>
+            <cbc:PaymentMeansID>Credito</cbc:PaymentMeansID>
+            <cbc:Amount currencyID="${document['DocumentCurrencyCode']}">${document['LegalMonetaryTotalPayableAmount']}</cbc:Amount>
+        </cac:PaymentTerms>
+        <py:for each="payment_date in document['PaymentDates']">
+        <cac:PaymentTerms>
+            <cbc:ID>FormaPago</cbc:ID>
+            <cbc:PaymentMeansID>Cuota001</cbc:PaymentMeansID>
+            <cbc:Amount currencyID="${document['DocumentCurrencyCode']}">${payment_date[1]}</cbc:Amount>
+            <cbc:PaymentDueDate>${payment_date[0]}</cbc:PaymentDueDate>
+        </cac:PaymentTerms>
+        </py:for>
+        </py:otherwise>
+    </py:choose>
+    <cac:TaxTotal py:for="tax in document['InvoiceTaxes']">
+        <cbc:TaxAmount currencyID="${tax['DocumentCurrencyCode']}">${tax['TaxTotal']}</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="${tax['DocumentCurrencyCode']}">${tax['TaxableSubTotal']}</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="${tax['DocumentCurrencyCode']}">${tax['TaxSubTotal']}</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID schemeID="UN/ECE 5305"
+                    schemeName="Tax Category Identifier"
+                    schemeAgencyName="United Nations Economic Commission for Europe">${tax['TaxTotalCategory']}</cbc:ID>
+                <cac:TaxScheme>
+                    <cbc:ID schemeID="UN/ECE 5153"
+                        schemeAgencyID="6">${tax['TaxTotalID']}</cbc:ID>
+                    <cbc:Name>${tax['TaxTotalName']}</cbc:Name>
+                    <cbc:TaxTypeCode>${tax['TaxTotalTaxTypeCode']}</cbc:TaxTypeCode>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="${document['DocumentCurrencyCode']}">${document['LegalMonetaryTotalLineExtensionAmount']}</cbc:LineExtensionAmount>
+        <cbc:TaxInclusiveAmount currencyID="${document['DocumentCurrencyCode']}">${document['LegalMonetaryTotalPayableAmount']}</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="${document['DocumentCurrencyCode']}">${document['LegalMonetaryTotalPayableAmount']}</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine py:for="line in document['InvoiceLines']">
+        <cbc:ID>${line['InvoiceLineID']}</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="ZZ"
+            unitCodeListID="UN/ECE rec 20"
+            unitCodeListAgencyName="United Nations Economic Commission forEurope">${line['InvoiceLineQuantity']}</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="${document['DocumentCurrencyCode']}">${line['InvoiceLineExtensionAmount']}</cbc:LineExtensionAmount>
+        <cbc:FreeOfChargeIndicator>${line['InvoiceLineFreeOfChargeIndicator']}</cbc:FreeOfChargeIndicator>
+        <cac:PricingReference>
+            <cac:AlternativeConditionPrice>
+                <cbc:PriceAmount currencyID="${line['DocumentCurrencyCode']}">${line['InvoiceLinePriceAmount']}</cbc:PriceAmount>
+                <cbc:PriceTypeCode  listName="SUNAT:Indicador de Tipo de Precio"
+                    listAgencyName="PE:SUNAT"
+                    listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16">${line['InvoiceLinePriceTypeCode']}</cbc:PriceTypeCode>
+            </cac:AlternativeConditionPrice>
+        </cac:PricingReference>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="${line['DocumentCurrencyCode']}">${line['InvoiceLineTaxAmount']}</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="${line['DocumentCurrencyCode']}">${line['InvoiceLineTaxableAmount']}</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="${line['DocumentCurrencyCode']}">${line['InvoiceLineTaxAmount']}</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID schemeID="UN/ECE 5305"
+                        schemeName="Tax Category Identifier"
+                        schemeAgencyName="United Nations Economic Commission for Europe">S</cbc:ID>
+                    <cbc:Percent>18.00</cbc:Percent>
+                    <cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT"
+                                                listName="SUNAT:Codigo de Tipo de Afectaci�n del IGV"
+                                                listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">${line['InvoiceLineTaxCategory']}</cbc:TaxExemptionReasonCode>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeID="UN/ECE 5153"
+                            schemeName="Tax Scheme Identifier"
+                            schemeAgencyName="United Nations Economic Commission for Europe"  >1000</cbc:ID>
+                        <cbc:Name>IGV</cbc:Name>
+                        <cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>${line['InvoiceLineItemDescription']}</cbc:Description>
+            <cac:SellersItemIdentification>
+                <cbc:ID>${line['InvoiceLineItemID']}</cbc:ID>
+            </cac:SellersItemIdentification>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="${line['DocumentCurrencyCode']}">${line['InvoiceLineItemPriceAmount']}</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+</Invoice>

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<data>
+  <xpath expr="/form/field[@name='journal']" position="after">
+    <label name="invoice_type"/>
+    <field name="invoice_type"/>
+    <label name="document_type"/>
+    <field name="document_type"/>
+  </xpath>
+  <xpath expr="/form/field[@name='number']" position="after">
+    <newline/>
+    <label name="sunat_document_type"/>
+    <field name="sunat_document_type" colspan="3"/>
+    <newline/>
+  </xpath>
+  <xpath expr="/form/field[@name='reference']" position="after">
+    <label name="amount_in_letters"/>
+    <field name="amount_in_letters" readonly="1"/>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']/field[@name='invoice_date']" position="after">
+    <label name="invoice_time"/>
+    <field name="invoice_time"/>
+    <label name="invoice_duedate"/>
+    <field name="invoice_duedate"/>
+  </xpath>
+
+  <xpath expr="/form/notebook/page[@id='invoice']/group[@id='taxes_amount_state_buttons']/group[@id='amount_state_buttons']/group[@id='amount']/label[@name='untaxed_amount']" position="before">
+
+    <label name="total_discount" xalign="1.0" xexpand="1"/>
+    <field name="total_discount" xalign="1.0" xexpand="0"/>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']/group[@id='taxes_amount_state_buttons']/group[@id='amount_state_buttons']/group[@id='amount']/field[@name='untaxed_amount']" position="after">
+
+    <label name="total_exonerated" xalign="1.0" xexpand="1"/>
+    <field name="total_exonerated" xalign="1.0" xexpand="0"/>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']/group[@id='taxes_amount_state_buttons']/group[@id='amount_state_buttons']/group[@id='buttons']/button[@name='cancel']" position="before">
+    <button name="write_einvoice" string="Generar de nuevo y enviar" icon="tryton-import"/>
+    <button name="send_einvoice" string="Reenviar" icon="tryton-refresh"/>
+    <!--<button name="cancel_einvoice" string="Anular" icon="tryton-back"/>-->
+    <button name="generate_xml" string="Descargar XML" icon="tryton-export"/>
+  </xpath>
+  <xpath expr="/form/notebook" position="inside">
+    <page id="sunat" string="Sunat" col="6">
+      <label name="sunat_date_sent"/>
+      <field name="sunat_date_sent" readonly="1"/>
+      <newline/>
+      <label name="sunat_invoice_status"/>
+      <field name="sunat_invoice_status" readonly="1"/>
+      <newline/>
+      <label name="sunat_invoice_related"/>
+      <field name="sunat_invoice_related"/>
+      <newline/>
+      <label name="sunat_response_message"/>
+      <field name="sunat_response_message" readonly="1"/>
+      <newline/>
+      <label name="sunat_sent_observation"/>
+      <field name="sunat_sent_observation" readonly="1"/>
+      <newline/>
+      <label name="sunat_sent_error"/>
+      <field name="sunat_sent_error" readonly="1"/>
+      <newline/>
+      <label name="void_reason"/>
+      <field name="void_reason" readonly="1"/>
+      <newline/>
+      <label name="void_ticket"/>
+      <field name="void_ticket" readonly="1"/>
+    </page>
+  </xpath>
+  <xpath expr="/form" position="replace_attributes">
+    <form col="8" cursor="party">
+    </form>
+  </xpath>
+  <xpath expr="/form/field[@name='description']" position="replace">
+    <field name="description"/>
+  </xpath>
+  <xpath expr="/form/notebook" position="replace_attributes">
+    <notebook colspan="8">
+    </notebook>
+  </xpath>
+  <xpath expr="/form" position="replace_attributes">
+    <form col="6">
+    </form>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']" position="replace_attributes">
+    <page string="Invoice" id="invoice" col="8">
+    </page>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']/field[@name='lines']" position="replace_attributes">
+    <field name="lines" colspan="10" view_ids="account_invoice.invoice_line_view_tree_sequence"/>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='invoice']/group[@id='taxes_amount_state_buttons']" position="replace_attributes">
+    <group col="2" colspan="10" id="taxes_amount_state_buttons">
+    </group>
+  </xpath>
+  <xpath expr="/form/notebook" position="inside">
+    <page id="modified_document_info" string="Documento modificado">
+      <group id="modified_document" colspan="4">
+        <label name="modified_document"/>
+        <field name="modified_document" readonly="1"/>
+        <newline/>
+        <label name="modified_document_date"/>
+        <field name="modified_document_date" readonly="1"/>
+        <newline/>
+        <label name="modified_document_reason"/>
+        <field name="modified_document_reason"/>
+        <newline/>
+        <label name="debit_modified_document_reason"/>
+        <field name="debit_modified_document_reason"/>
+      </group>
+    </page>
+  </xpath>
+</data>

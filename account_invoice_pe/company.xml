@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="company_view_form">
+            <field name="model">company.company</field>
+            <field name="inherit" ref="company.company_view_form"/>
+            <field name="name">company_form</field>
+        </record>
+        <record model="ir.model.button" id="company_load_logo_from_url">
+            <field name="name">load_logo_from_url</field>
+            <field name="model" search="[('model', '=', 'company.company')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="company_load_logo_from_url_button_group_account">
+            <field name="button" ref="company_load_logo_from_url"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+    </data>
+</tryton>

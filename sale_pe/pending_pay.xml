@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <!-- Pending Pay Invoices -->
+
+        <!--View por cobrar detallado-->
+        <record model="ir.ui.view" id="pending_pay_view_form">
+            <field name="model">pending.pay</field>
+            <field name="type">form</field>
+            <field name="name">pending_pay_form</field>
+        </record>
+
+        <!--Wizard por cobrar detallado-->
+        <record model="ir.action.wizard" id="pending_pay_wizard">
+            <field name="name">Generar reporte detallado por cobrar</field>
+            <field name="wiz_name">pending.pay.wizard</field>
+        </record>
+
+        <!--Report por cobrar detallado-->
+        <record model="ir.action.report" id="pending_pay_report">
+            <field name="name">Pendientes por cobrar detallado</field>
+            <field name="model">pending.pay</field>
+            <field name="report_name">pending.pay.report</field>
+            <field name="report">sale_pe/report/pending_pay.odt</field>
+            <field name="template_extension">odt</field>
+        </record>
+
+        <!-- View por cobrar acumulado -->
+        <record model="ir.ui.view" id="pending_pay_accumulated_view_form">
+            <field name="model">pending.pay.accumulated</field>
+            <field name="type">form</field>
+            <field name="name">pending_pay_accumulated_form</field>
+        </record>
+
+        <!-- Wizard por cobrar acumulado -->
+        <record model="ir.action.wizard" id="pending_pay_accumulated_wizard">
+            <field name="name">Generar reporte acumulado por cobrar</field>
+            <field name="wiz_name">pending.pay.accumulated.wiz</field>
+        </record>
+
+        <!--  Report por cobrar acumulado -->
+        <record model="ir.action.report" id="pending_pay_accumulated_report">
+            <field name="name">Pendientes por cobrar acumulado</field>
+            <field name="model">pending.pay.accumulated</field>
+            <field name="report_name">pending.pay.accumulated.report</field>
+            <field name="report">sale_pe/report/pending_pay_accumulated.odt</field>
+            <field name="template_extension">odt</field>
+        </record>
+
+        <!-- Menu Item Detallado-->
+        <menuitem parent="sale.menu_reporting" action="pending_pay_wizard" name="Pendientes por cobrar detallado" id="custumer_slopes_detailed"/>
+        <!--  Menu Item Acumulado  -->
+        <menuitem parent="sale.menu_reporting" action="pending_pay_accumulated_wizard" name="Pendientes por cobrar acumulado" id="custumer_slopes_accumulated"/>
+    </data>
+</tryton>

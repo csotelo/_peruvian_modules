@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/tree/field[@name='type']" position="after">
+        <field name="document_type" readonly="1"/>
+    </xpath>
+    <xpath expr="/tree/field[@name='amount_to_pay_today']" position="after">
+        <field name="sunat_generated_status" readonly="1"/>
+        <field name="sunat_date_generated" widget="date" readonly="1"/>
+        <field name="sunat_date_generated" widget="time" readonly="1" string="Hora de generación electrónica"/>
+        <field name="sunat_sent_status" readonly="1"/>
+        <field name="sunat_invoice_status" readonly="1"/>
+    </xpath>
+    <xpath expr="/tree/field[@name='description']" position="replace">
+    </xpath>
+</data>

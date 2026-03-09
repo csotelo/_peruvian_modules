@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<form col="2">
+    <image name="tryton-info" xexpand="0" xfill="0"/>
+    <group col="2" id="void_form">
+        <label string="¿Realmente desea anular el comprobante? Este proceso es irreversible." id="cancel_help_text" colspan="2" yalign="0.0" xalign="0.0" xexpand="1"/>
+    </group>
+</form>

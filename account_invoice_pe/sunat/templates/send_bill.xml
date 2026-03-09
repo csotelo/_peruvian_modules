@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sunat.gob.pe" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<soapenv:Header>
+<wsse:Security>
+<wsse:UsernameToken>
+<wsse:Username>{{SunatRUC}}{{SunatUser}}</wsse:Username>
+<wsse:Password>{{SunatPass}}</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</soapenv:Header>
+<soapenv:Body>
+<ser:sendBill>
+<fileName>{{InvoiceFileName}}</fileName>
+<contentFile>{{InvoiceFileContent}}</contentFile>
+</ser:sendBill>
+</soapenv:Body>
+</soapenv:Envelope>

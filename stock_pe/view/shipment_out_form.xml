@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<data>
+  <xpath expr="/form" position="replace_attributes">
+    <form col="6" cursor="customer">
+    </form>
+  </xpath>
+  <xpath expr="/form/label[@name='reference']" position="replace">
+  </xpath>
+  <xpath expr="/form/field[@name='reference']" position="replace">
+  </xpath>
+
+  <xpath expr="/form/notebook" position="replace_attributes">
+    <notebook colspan="6">
+    </notebook>
+  </xpath>
+
+  <xpath expr="/form/field[@name='warehouse']" position="after">
+    <label name="sunat_shipment_handling_code" />
+    <field name="sunat_shipment_handling_code" />
+    <label name="netweight" />
+    <field name="netweight" />
+    <label name="grossweight" />
+    <field name="grossweight" />
+    <label name="tareweight" string="Tara (kg)"/>
+    <field name="tareweight" />
+  </xpath>
+  <xpath expr="/form/notebook" position="inside">
+    <page id="sunat" string="SUNAT" col="6">
+      <label name="sunat_date_sent"/>
+      <field name="sunat_date_sent" readonly="1"/>
+      <newline/>
+      <label name="sunat_response_message"/>
+      <field name="sunat_response_message" readonly="1"/>
+      <newline/>
+      <label name="sunat_sent_observation"/>
+      <field name="sunat_sent_observation" readonly="1"/>
+      <newline/>
+      <label name="sunat_sent_error"/>
+      <field name="sunat_sent_error" readonly="1"/>
+    </page>
+  </xpath>
+  <xpath expr="/form/notebook" position="inside">
+    <page id="reason" string="Razón" col="6">
+      <label name="reason" />
+      <field name="reason"/>
+    </page>
+  </xpath>
+  <xpath expr="/form/group[@id='state_buttons']/group[@id='buttons']" position="inside">
+    <button string="Enviar a Sunat" name="send_sunat" icon="tryton-ok"/>
+  </xpath>
+  <xpath expr="/form/field[@name='tareweight']" position="after">
+    <label name="document_reference"/>
+    <field name="document_reference"/>
+  </xpath>
+  <xpath expr="/form/group[@id='state_buttons']" position="replace_attributes">
+    <group col="8" colspan="8" id="state_buttons">
+    </group>
+  </xpath>
+
+  <!--Package page for a cleaner view-->
+  <xpath expr="/form/notebook" position="inside">
+    <page id="package" string="Paquetes" col="6">
+      <field name="root_packages" colspan="4" view_ids="stock_package.package_view_tree"/>
+    </page>
+  </xpath>
+  <xpath expr="/form/notebook/page[@id='outgoing_moves']/field[@name='root_packages']" position="replace">
+  </xpath>
+</data>

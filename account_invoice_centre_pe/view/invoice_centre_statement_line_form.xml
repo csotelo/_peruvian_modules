@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<form>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="currency_rate"/>
+    <field name="currency_rate"/>
+    <label name="entry_type"/>
+    <field name="entry_type"/>
+    <newline />
+    <label name="denomination"/>
+    <field name="denomination"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="amount"/>
+    <field name="amount"/>
+</form>

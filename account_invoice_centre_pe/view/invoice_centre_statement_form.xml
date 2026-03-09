@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<form col="4">
+    <label name="invoicing_centre"/>
+    <field name="invoicing_centre"/>
+    <label name="invoicing_centre_statement_date"/>
+    <field name="invoicing_centre_statement_date"/>
+    <newline />
+    <group id="petty_cash" string="Caja Chica" colspan="2">
+        <label name="opening_balance" string="Saldo Inicial"/>
+        <field name="opening_balance"/>
+        <newline/>
+        <label name="statement_outs_amount"/>
+        <field name="statement_outs_amount"/>
+        <newline/>
+        <label name="closing_balance" string="Saldo Final"/>
+        <field name="closing_balance"/>
+    </group>
+    <group id="supplier_amounts" string="Monto Facturado" colspan="2">
+        <label name="invoiced_amount" string="Cliente"/>
+        <field name="invoiced_amount"/>
+        <newline/>
+        <label name="supplier_invoiced_amount" string="Proveedor"/>
+        <field name="supplier_invoiced_amount"/>
+    </group>
+    <group id="customer_amounts" string="Pagos" colspan="2">
+        <label name="paid_amount" string="Ingresos"/>
+        <field name="paid_amount"/>
+        <label name="statement_lines_amount"/>
+        <field name="statement_lines_amount"/>
+        <label name="supplier_paid_amount" string="Egresos"/>
+        <field name="supplier_paid_amount"/>
+        <label name="final_amount"/>
+        <field name="final_amount"/>
+    </group>
+    <group id="currency_data" string="Moneda" colspan="2">
+        <label name="currency"/>
+        <field name="currency" readonly="1"/>
+        <label name="second_currency"/>
+        <field name="second_currency" readonly="1"/>
+        <label name="second_currency_rate"/>
+        <field name="second_currency_rate" readonly="1"/>
+    </group>
+    <notebook>
+        <page id="pj_invoices" string="Comprobantes de pago">
+            <field name="invoices" colspan="6" readonly="1"/>
+        </page>
+        <page id="pj_payment_lines" string="Lineas de pago">
+            <field name="payment_lines" colspan="6" readonly="1" view_ids="account_invoice.move_line_view_list_payment" />
+        </page>
+        <page id="pj_statement_outs" string="Salida de Caja">
+            <field name="statement_outs" colspan="6" readonly="1"/>
+        </page>
+        <page id="pj_statement_lines" string="Extracto">
+            <field name="statement_lines" colspan="6"/>
+        </page>
+    </notebook>
+    <group col="5" colspan="4" id="buttons">
+        <button name="open_invoicing_centre_statement" string="Aperturar" icon="tryton-forward"/>
+        <button name="draft_invoicing_centre_statement" string="_Borrador" icon="tryton-back"/>
+        <button name="validate_invoicing_centre_statement" string="Validar" icon="tryton-forward"/>
+        <button name="post_invoicing_centre_statement" string="_Cerrar" icon="tryton-ok"/>
+    </group>
+</form>

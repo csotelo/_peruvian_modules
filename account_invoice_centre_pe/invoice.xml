@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- View: Invoice Sequences -->
+        <record model="ir.ui.view" id="invoice_sequence_view_tree">
+            <field name="model">account.invoice.sequence</field>
+            <field name="inherit" ref="account_invoice_pe.invoice_sequence_view_tree"/>
+            <field name="name">invoice_sequence_tree</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_sequence_view_form">
+            <field name="model">account.invoice.sequence</field>
+            <field name="inherit" ref="account_invoice_pe.invoice_sequence_view_form"/>
+            <field name="name">invoice_sequence_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_line_list_payment">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account_invoice.move_line_view_list_payment"/>
+            <field name="name">move_line_list_payment</field>            
+        </record>
+        <!--Nullify-->
+        <record model="ir.action.wizard" id="act_nullify_lines">
+            <field name="name">Anular Pagos</field>
+            <field name="wiz_name">account.move.nullify</field>
+            <field name="model">account.invoice</field>
+        </record>
+        <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_nullify_lines"/>
+        </record>
+        
+    </data>
+</tryton>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/tree/field[@name='unit_price']" position="before">
+        <field name="gross_unit_price"/>
+        <!--
+        <field name="gross_unit_price_wo_round"/>
+        -->
+        <field name="discount" factor="100">
+            <suffix name="discount" string="%"/>
+        </field>
+        <!--
+        <field name="global_discount" factor="100">
+            <suffix name="global_discount" string="%"/>
+        </field>
+        -->
+    </xpath>
+</data>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<form>
+    <group colspan="4" col="6" id="group_invoice_centre_header">
+        <label name="name"/>
+        <field name="name"/>
+        <newline />
+        <label name="description"/>
+        <field name="description"/>
+        <newline />
+        <label name="can_post"/>
+        <field name="can_post"/>
+        <label name="can_pay"/>
+        <field name="can_pay"/>
+        <label name="active"/>
+        <field name="active"/>
+
+    </group>
+    <group colspan="4" col="6" id="group_invoice_centre_sequences">
+        <field name="invoice_sequences" colspan="4"/>
+    </group>
+</form>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<data>
+  <xpath expr="/tree/field[@name='origin']"
+        position="before">
+        <field name="operation_number"/>
+    </xpath>
+</data>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part product_barcode_label module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_xml_view_form">
+            <field name="model">account.invoice.xml.model</field>
+            <field name="type">form</field>
+            <field name="name">invoice_xml_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_generate_xml">
+            <field name="name">Archivo XML</field>
+            <field name="wiz_name">account.invoice.xml.wizard</field>
+            <field name="model">account.invoice</field>
+        </record>
+    </data>
+</tryton>

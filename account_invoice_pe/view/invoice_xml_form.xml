@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<form>
+        <label name="label" />
+        <field name="label" />
+        <label name="filename" />
+        <field name="filename" />
+</form>

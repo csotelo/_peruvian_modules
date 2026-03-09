@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <menuitem name="Centros de facturación" parent="account.menu_account_configuration"
+            id="menu_conf_invoice_centre" sequence="10"/>
+
+        <record model="ir.ui.view" id="invoice_centre_view_form">
+            <field name="model">account.invoice.centre</field>
+            <field name="type">form</field>
+            <field name="name">invoice_centre_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_centre_view_tree">
+            <field name="model">account.invoice.centre</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_centre_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_invoice_centre">
+            <field name="name">Centros de facturación</field>
+            <field name="res_model">account.invoice.centre</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_invoice_centre_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_centre_view_tree"/>
+            <field name="act_window" ref="act_account_invoice_centre"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_invoice_centre_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_centre_view_form"/>
+            <field name="act_window" ref="act_account_invoice_centre"/>
+        </record>
+
+        <menuitem name="Centro de facturación" parent="menu_conf_invoice_centre"
+            id="menu_invoice_centre" action="act_account_invoice_centre"/>
+
+        <record model="ir.ui.view" id="invoice_centre_statement_view_form">
+            <field name="model">account.invoice.centre.statement</field>
+            <field name="type">form</field>
+            <field name="name">invoice_centre_statement_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_centre_statement_view_tree">
+            <field name="model">account.invoice.centre.statement</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_centre_statement_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_invoice_centre_statement">
+            <field name="name">Apertura y Cierre de caja</field>
+            <field name="res_model">account.invoice.centre.statement</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_invoice_centre_statement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_centre_statement_view_tree"/>
+            <field name="act_window" ref="act_account_invoice_centre_statement"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_invoice_centre_statement_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_centre_statement_view_form"/>
+            <field name="act_window" ref="act_account_invoice_centre_statement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_invoice_centre_statement_domain_draft">
+            <field name="name">Aperturadas</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="act_window" ref="act_account_invoice_centre_statement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_invoice_centre_statement_domain_validated">
+            <field name="name">Validadas</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
+            <field name="act_window" ref="act_account_invoice_centre_statement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_invoice_centre_statement_domain_posted">
+            <field name="name">Cerradas</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
+            <field name="act_window" ref="act_account_invoice_centre_statement"/>
+        </record>
+        <menuitem 
+            name="Centros de facturación" 
+            parent="account.menu_account"
+            id="menu_main_invoicing_centre" 
+            sequence="10"/>
+        <menuitem
+            name="Gestión de caja"
+            parent="menu_main_invoicing_centre"
+            id="menu_invoicing_centre"
+            action="act_account_invoice_centre_statement"
+            />
+        <record model="ir.ui.view" id="invoice_centre_statement_out_view_form">
+            <field name="model">centre.out</field>
+            <field name="type">form</field>
+            <field name="name">invoice_centre_statement_out_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_centre_statement_out_view_tree">
+            <field name="model">centre.out</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_centre_statement_out_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_invoice_centre_statement_out">
+            <field name="name">Salidas</field>
+            <field name="res_model">centre.out</field>
+        </record>
+        <menuitem name="Salidas"
+            parent="menu_main_invoicing_centre"
+            id="menu_invoicing_centre_statement_out"
+            action="act_account_invoice_centre_statement_out"
+        />
+        <!--
+        <record model="ir.ui.view" id="invoice_centre_shift_view_form">
+            <field name="model">account.invoice.centre.shift</field>
+            <field name="type">form</field>
+            <field name="name">invoice_centre_shift_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_centre_shift_view_tree">
+            <field name="model">account.invoice.centre.shift</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_centre_shift_tree</field>
+        </record>
+        -->
+
+        <record model="ir.ui.view" id="invoice_centre_statement_line_view_form">
+            <field name="model">centre.line</field>
+            <field name="type">form</field>
+            <field name="name">invoice_centre_statement_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_centre_statement_line_view_tree">
+            <field name="model">centre.line</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_centre_statement_line_tree</field>
+        </record>
+
+        <record model="ir.model.button" id="invoice_centre_statement_draft_button">
+            <field name="name">draft_invoice_centre_statement</field>
+            <field name="model" search="[('model', '=', 'account.invoice.centre.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="invoice_centre_statement_draft_button_group_account">
+            <field name="button" ref="invoice_centre_statement_draft_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="invoice_centre_statement_validate_button">
+            <field name="name">validate_invoice_centre_statement</field>
+            <field name="model" search="[('model', '=', 'account.invoice.centre.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="invoice_centre_statement_validate_button_group_account">
+            <field name="button" ref="invoice_centre_statement_validate_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="invoice_centre_statement_post_button">
+            <field name="name">post_invoice_centre_statement</field>
+            <field name="model" search="[('model', '=', 'account.invoice.centre.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="invoice_centre_statement_post_button_group_account">
+            <field name="button" ref="invoice_centre_statement_post_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="invoice_centre_statement_open_button">
+            <field name="name">open_invoice_centre_statement</field>
+            <field name="model" search="[('model', '=', 'account.invoice.centre.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="invoice_centre_statement_open_button_group_account">
+            <field name="button" ref="invoice_centre_statement_open_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.action.report" id="invoice_centre_statement_report">
+            <field name="name">Reporte de caja</field>
+		    <field name="model">account.invoice.centre.statement</field>
+		    <field name="report_name">account.invoice.centre.statement</field>
+		    <field name="report">account_invoice_centre_pe/report/invoice_centre_statement.odt</field>
+        </record>
+		<record model="ir.action.keyword" id="invoice_centre_statement_report_key">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice.centre.statement,-1</field>
+            <field name="action" ref="invoice_centre_statement_report"/>
+        </record>
+
+    </data>
+</tryton>

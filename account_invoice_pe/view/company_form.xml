@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/form/notebook/page[@id='company']/field[@name='parent']" position="after">
+        <group yfill="1" string="Logotipo" id="company_logo">
+            <field xfill="0" xexpand="1" name="logo" height="128" width="128" widget="image"/>
+        </group>
+        <group yfill="1" string="Información general" id="company_info">
+            <label name="ruc"/>
+            <field name="ruc"/>
+            <label name="detraction_account"/>
+            <field name="detraction_account"/>
+            <newline />
+            <label name="fiscal_address"/>
+            <field name="fiscal_address" colspan="3"/>
+            <label name="commercial_address"/>
+            <field name="commercial_address" colspan="3"/>
+            <newline />
+            <label name="phone"/>
+            <field name="phone"/>
+            <label name="fax"/>
+            <field name="fax"/>
+            <newline />
+            <label name="website"/>
+            <field name="website"/>
+            <label name="email"/>
+            <field name="email"/>
+        </group>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='reports']" position="after">
+        <page string="Factura electrónica SUNAT" id="sunat" col="4">
+            <separator string="Credenciales Clave SOL" id='credentials' colspan="4"/>
+            <newline />
+            <label name="sol_username"/>
+            <field name="sol_username"/>
+            <label name="password"/>
+            <field name="password" widget="password"/>
+            <separator string="Información adicional para factura" id='adicional' colspan="4"/>
+            <label name="invoicing_resolution"/>
+            <field name="invoicing_resolution"/>
+            <label name="invoicing_website"/>
+            <field name="invoicing_website"/>
+            <newline />
+            <label name="invoicing_email_sender"/>
+            <field name="invoicing_email_sender"/>
+            <label name="invoicing_email_receiver"/>
+            <field name="invoicing_email_receiver"/>
+            <newline />
+            <newline />
+            <separator string="Modo de facturación" id='certmode' colspan="4"/>
+            <field name="invoicing_mode" colspan="4"/>
+            <separator string="Certificado" id='certificate' colspan="4"/>
+            <field name="sunat_certificate" colspan="4"/>
+            <separator string="Clave Privada" id='pass' colspan="4"/>
+            <field name="sunat_private_key" colspan="4"/>
+        </page>
+    </xpath>
+    <!--
+    <xpath expr="/form/field[@name='timezone']" position="after">
+        <newline />
+            <label name="logo_url"/>
+            <field name="logo_url" help="Intentará descargar el logotipo"/>
+            <label name="logo"/>
+            <field name="logo"/>
+        </xpath>
+    -->
+    <xpath expr="/form/field[@name='currency']" position="after">
+        <newline />
+        <label name="second_currency"/>
+        <field name="second_currency"/>
+    </xpath>
+</data>

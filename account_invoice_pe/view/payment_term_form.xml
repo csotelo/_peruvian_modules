@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/form/field[@name='active']" position="after">
+        <label name="is_customer_payment_term_default" />
+        <field name="is_customer_payment_term_default" />
+        <label name="is_supplier_payment_term_default" />
+        <field name="is_supplier_payment_term_default" />
+    </xpath>
+</data>

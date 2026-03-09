@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
+    <group col="2" id="debit_refund">
+        <label string="Are you sure to debit those/this invoice(s)?" id="debit" colspan="2" yalign="0.0" xalign="0.0" xexpand="1"/>
+        <label name="modified_document_reason"/>
+        <field name="modified_document_reason"/>
+        <label name="debit_note_reason"/>
+        <field name="debit_note_reason"/>
+    </group>
+</form>

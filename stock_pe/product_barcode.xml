@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.report" id="report_product_barcode">
+            <field name="name">Codigo barra</field>
+            <field name="report_name">product.barcode.report</field>
+            <field name="model">product.product</field>
+            <field name="report">stock_pe/reports/barcode.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_product_barcode_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="report_product_barcode"/>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<form>
+    <group id="report_params_invoice" colspan="4">
+        <label name="start_date"/>
+        <field name="start_date"/>
+        <label name="end_date"/>
+        <field name="end_date"/>
+        <newline/>
+        <label name ="invoice_type"/>
+        <field name ="invoice_type"/>
+        <label name ="invoice_currency"/>
+        <field name ="invoice_currency"/>
+    </group>
+    <newline/>
+    <group id="report_params_customer" colspan="4">
+        <label name="party"/>
+        <field name="party"/>
+    </group>
+</form>
+

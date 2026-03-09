@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<data>
+  <xpath expr="/form/group[@id='credit_refund']/field[@name='with_refund']" position="after">
+    <label name="modified_document_reason"/>
+    <field name="modified_document_reason"/>
+  </xpath>
+</data>

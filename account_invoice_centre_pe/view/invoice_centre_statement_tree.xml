@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="invoicing_centre"/>
+    <field name="invoicing_centre_statement_date" expand="1" readonly="1"/>
+    <field name="opening_datetime" expand="1" readonly="1" widget="date"/>
+    <field name="opening_datetime" expand="1" readonly="1" widget="time"/>
+    <field name="closing_datetime" expand="1" readonly="1" widget="date"/>
+    <field name="closing_datetime" expand="1" readonly="1" widget="time"/>
+    <field name="opening_balance" expand="1" readonly="1"/>
+    <field name="closing_balance" expand="1" readonly="1"/>
+    <field name="state" expand="1" readonly="1"/>
+</tree>

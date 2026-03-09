@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="currency" expand="1"/>
+    <field name="currency_rate" expand="1"/>
+    <field name="entry_type" expand="1"/>
+    <field name="denomination" expand="1"/>
+    <field name="quantity" expand="1"/>
+    <field name="amount" expand="1"/>
+</tree>

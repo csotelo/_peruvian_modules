@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<form>
+    <label name="statement_date"/>
+    <field name="statement_date"/>
+    <label name="currency_rate"/>
+    <field name="currency_rate"/>
+    <newline/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="remain_amount"/>
+    <field name="remain_amount"/>
+    <newline/>
+    <label name="employee"/>
+    <field name="employee" colspan="3"/>
+    <newline/>
+    <label name="authorized_by"/>
+    <field name="authorized_by" colspan="3"/>
+    <newline/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="final_amount"/>
+    <field name="final_amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+</form>
